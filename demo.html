@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>echarts-auto-tooltip</title>
+    <script src="https://cdn.bootcss.com/echarts/3.8.5/echarts.common.min.js"></script>
+    <script type="text/javascript" src="./echarts-auto-tooltip.js"></script>
+    <style>
+        body {
+            background: #0A1B2B;
+        }
+        #pie, #line {
+            display: inline-block;
+        }
+        #pie {
+            margin-right: 40px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+        #line {
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="pie" style="width: 600px;height:400px;"></div>
+<div id="line" style="width: 600px;height:400px;"></div>
+<script>
+    (function () {
+        drawSensitiveFile();
+        drawEventAnalysis();
+    })();
+
+    function drawSensitiveFile() {
+        let myChart = echarts.init(document.getElementById('pie'));
+        let option = {
+            title: {
+                text: '敏感文件分布分析',
+                x: '40',
+                textStyle: {
+                    color: '#fff'
+                }
+
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)",
+
+            },
+            legend: {
+                type: 'scroll',
+                orient: 'vertical',
+                right: 10,
+                top: 20,
+                bottom: 20,
+                data: ['人事类', '研发类', '营销类', '客户信息类'],
+                textStyle: {
+                    color: '#fff'
+                }
+            },
+            series: [
+                {
+                    name: '敏感文件分布数量',
+                    type: 'pie',
+                    radius: '55%',
+                    center: ['50%', '60%'],
+                    data: [
+                        {value: 335, name: '人事类'},
+                        {value: 310, name: '研发类'},
+                        {value: 234, name: '营销类'},
+                        {value: 1548, name: '客户信息类'}
+                    ],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            lineStyle: {
+                                color: "#fff"
+                            }
+                        },
+                    },
+                    label: {
+                        normal: {
+                            textStyle: {
+                                color: '#fff'
+                            }
+                        }
+                    },
+                }
+            ]
+        };
+        myChart.setOption(option);
+        tools.loopShowTooltip(myChart, option, {loopSeries: true});
+
+    }
+
+
+    function drawEventAnalysis() {
+        let myChart = echarts.init(document.getElementById('line'));
+        let option = {
+            color: ['#FE4D0F', '#FDD930', '#4785DB'],
+            title: {
+                text: '漏洞态势分析',
+                textStyle: {
+                    color: '#fff'
+                }
+
+            },
+            tooltip: {
+                trigger: 'axis',
+            },
+            legend: {
+                data: ['高危', '中危', '低危'],
+                textStyle: {
+                    color: '#fff'
+                },
+                x: 'center',
+                y: '30',
+
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['08/20', '08/21', '08/22', '08/23', '08/24', '08/25', '08/26'],
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#fff'
+                    }
+
+                },
+            },
+            yAxis: {
+                type: 'value',
+                name: '漏洞数量',
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#fff'
+                    }
+
+                },
+                axisTick: {show: false},
+                splitLine: {show: false},
+
+            },
+            series: [{
+                name: '高危',
+                type: 'line',
+                stack: '总量',
+                data: [120, 132, 101, 134, 90, 230, 210]
+            }, {
+                name: '中危',
+                type: 'line',
+                stack: '总量',
+                data: [220, 182, 191, 234, 290, 330, 310]
+            }, {
+                name: '低危',
+                type: 'line',
+                stack: '总量',
+                data: [150, 232, 201, 154, 190, 330, 410]
+            }
+            ]
+        };
+
+        myChart.setOption(option);
+
+        tools.loopShowTooltip(myChart, option, {loopSeries: true});
+
+
+    }
+
+
+</script>
+</body>
+
+</html>
