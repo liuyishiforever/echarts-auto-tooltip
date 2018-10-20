@@ -7,7 +7,7 @@
 比如:
 
 ![设计图1](http://wx3.sinaimg.cn/mw690/0060lm7Tly1fwf1gxza98j3076078412.jpg)
-![设计图2](http://wx3.sinaimg.cn/mw690/0060lm7Tly1fwf1gy8qnrj30cx0870yw.jpg)
+![设计图2](http://wx1.sinaimg.cn/mw690/0060lm7Tly1fwf3zn3wmvj30cx0870yw.jpg)
 
 得让页面的数据(即tootips)自动轮播数据,效果是这样的.
 
