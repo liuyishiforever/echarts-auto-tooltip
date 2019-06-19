@@ -1,6 +1,7 @@
 
 ## 前言
 最近, 工作中要做类似这种的项目. 用到了百度的 [echarts](http://echarts.baidu.com) 这个开源的数据可视化的框架.
+
 ![安全态势感知](http://wx4.sinaimg.cn/mw690/0060lm7Tly1fwf14rudhqj30dx07g74q.jpeg)
 
 因为投屏项目不像PC端的WEB, 它不允许用户用鼠标键盘等交互. 有些图表只能看到各部分的占比情况, 不能显示具体的数值.
