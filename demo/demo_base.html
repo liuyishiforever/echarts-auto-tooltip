@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>echarts-helper</title>
+	<style>
+    label{line-height: 40px;}
+    .echart-canvas{width: 100%; height: 430px; margin: 0 auto;}
+	</style>
+</head>
+<body>
+    <label>饼状图</label>
+    <div class="echart-canvas" 
+            echart-data='[{"title":"基础知识","get_score":11},{"title":"加分知识","get_score":12},{"title":"未分组","get_score":8}]' 
+            echart-config='{data_name:"分值占比",type:"pie",name_key:"title",value_key:"get_score"}'></div>
+
+    <label>饼状堆叠图</label>
+    <div class="echart-canvas"
+         echart-data='[{"title":"男生","date":"周一","total":8},{"title":"女生","date":"周一","total":12},{"title":"男生","date":"周二","total":9},{"title":"女生","date":"周二","total":6},{"title":"男生","date":"周三","total":10},{"title":"女生","date":"周三","total":12},]'
+         echart-config='{type:"bar-stack",name_key:"date",value_key:"total",data_key:"title"}'></div>
+
+    <label>雷达图</label>
+    <div class="echart-canvas" 
+            echart-data='[{"title":"基础知识","get_score":11,"group_total_score":13},{"title":"加分知识","get_score":5,"group_total_score":5},{"title":"未分组","get_score":1,"group_total_score":6}]' 
+            echart-config='{type:"radar",name_key:"title",value_key:"get_score",max_key:"group_total_score",data_name:"得分"}'></div>
+
+    <label>柱状图</label>
+    <div class="echart-canvas" 
+            echart-data='[{"use_second":99,"topic_tip":"第1题"},{"use_second":6,"topic_tip":"第2题"},{"use_second":3,"topic_tip":"第3题"},{"use_second":4,"topic_tip":"第4题"}]' 
+            echart-config='{type:"bar",name_key:"topic_tip",value_key:"use_second",data_name:"单题用时/秒"}' 
+            echart-option='{yAxis: {axisLabel: {formatter: "{value} 秒"}}}'></div>
+
+
+    <label>折线图</label>
+    <div class="echart-canvas" 
+            echart-data='[{"use_second":99,"topic_tip":"第1题"},{"use_second":6,"topic_tip":"第2题"},{"use_second":3,"topic_tip":"第3题"},{"use_second":4,"topic_tip":"第4题"}]' 
+            echart-config='{type:"line",name_key:"topic_tip",value_key:"use_second",data_name:"单题用时/秒"}' 
+            echart-option='{yAxis: {axisLabel: {formatter: "{value} 秒"}}}'></div>
+
+    <label>组合折线图</label>
+    <div    class="echart-canvas" 
+            echart-data='[{"count":2,"day":"2017-09-17","project_name":"中级PHP工程师"},{"count":3,"day":"2017-09-16","project_name":"中级PHP工程师"},{"count":1,"day":"2017-09-10","project_name":"中级PHP工程师"},{"count":2,"day":"2017-08-30","project_name":"极速职业测评"},{"count":1,"day":"2017-08-30","project_name":"中级PHP工程师"},{"count":1,"day":"2017-08-29","project_name":"极速职业测评"},{"count":1,"day":"2017-08-29","project_name":"中级PHP工程师"},{"count":1,"day":"2017-08-28","project_name":"极速职业测评"},{"count":1,"day":"2017-08-27","project_name":"极速职业测评"},{"count":1,"day":"2017-08-26","project_name":"极速职业测评"},{"count":1,"day":"2017-08-25","project_name":"极速职业测评"},{"count":2,"day":"2017-08-24","project_name":"极速职业测评"},{"count":2,"day":"2017-08-24","project_name":"中级PHP工程师"},{"count":1,"day":"2017-08-23","project_name":"中级PHP工程师"},{"count":1,"day":"2017-08-21","project_name":"中级PHP工程师"}]' 
+            echart-config='{type:"line",name_key:"day",value_key:"count",data_key:"project_name"}' 
+            echart-option='{yAxis: {axisLabel: {formatter: "{value} 人次"}}}'></div>
+
+    <label>组合柱状图</label>
+    <div    class="echart-canvas" 
+            echart-data='[{"count":2,"day":"2017-09-17","project_name":"中级PHP工程师"},{"count":3,"day":"2017-09-16","project_name":"中级PHP工程师"},{"count":1,"day":"2017-09-10","project_name":"中级PHP工程师"},{"count":2,"day":"2017-08-30","project_name":"极速职业测评"},{"count":1,"day":"2017-08-30","project_name":"中级PHP工程师"},{"count":1,"day":"2017-08-29","project_name":"极速职业测评"},{"count":1,"day":"2017-08-29","project_name":"中级PHP工程师"},{"count":1,"day":"2017-08-28","project_name":"极速职业测评"},{"count":1,"day":"2017-08-27","project_name":"极速职业测评"},{"count":1,"day":"2017-08-26","project_name":"极速职业测评"},{"count":1,"day":"2017-08-25","project_name":"极速职业测评"},{"count":2,"day":"2017-08-24","project_name":"极速职业测评"},{"count":2,"day":"2017-08-24","project_name":"中级PHP工程师"},{"count":1,"day":"2017-08-23","project_name":"中级PHP工程师"},{"count":1,"day":"2017-08-21","project_name":"中级PHP工程师"}]' 
+            echart-config='{type:"bar",name_key:"day",value_key:"count",data_key:"project_name"}' 
+            echart-option='{yAxis: {axisLabel: {formatter: "{value} 人次"}}}'></div>
+
+    <!--{type:["bar","line"],name_key:"participator",value_key:["get_score_proportion_centesimal","use_second"],data_name:["正确率","用时"]}-->
+
+    <label>组合柱状图+折线图</label>
+    <div    class="echart-canvas" 
+            echart-data='[{"use_second":140,"get_score":0,"get_score_proportion_centesimal":0,"participator":"第84位考生"},{"use_second":52,"get_score":10,"get_score_proportion_centesimal":40,"participator":"第86位考生"},{"use_second":162,"get_score":15,"get_score_proportion_centesimal":50,"participator":"第88位考生"}]' 
+            echart-config='{type:["bar","line"],name_key:"participator",value_key:["get_score_proportion_centesimal","use_second"],data_name:["正确率","用时"]}' 
+            echart-option='{yAxis: [{axisLabel: {formatter: "{value} %"}},{axisLabel: {formatter: "{value} 秒"}}]}'></div>
+
+
+    <label>仪表盘</label>
+    <div class="echart-canvas" 
+                    echart-data='{"get_score_proportion_centesimal":70.833333333333}' 
+                    echart-config='{type:"gauge",data_name:"得分统计",name_value:"正确率",value_key:"get_score_proportion_centesimal"}'></div>
+
+
+
+
+
+
+
+</body>
+
+<script src="jquery-1.9.1.min.js"></script>
+<script src="echarts.min.js"></script>
+<script src="../echarts.helper.js"></script>
+<script>
+    $('body').EChartHelper();
+</script>
+</html>

@@ -2,7 +2,7 @@
 ## 前言
 最近, 工作中要做类似这种的项目. 用到了百度的 [echarts](http://echarts.baidu.com) 这个开源的数据可视化的框架.
 
-![安全态势感知](http://wx4.sinaimg.cn/mw690/0060lm7Tly1fwf14rudhqj30dx07g74q.jpeg)
+[![安全态势感知](https://z3.ax1x.com/2021/09/10/hOfNgf.jpg)](https://imgtu.com/i/hOfNgf)
 
 因为投屏项目不像PC端的WEB, 它不允许用户用鼠标键盘等交互. 有些图表只能看到各部分的占比情况, 不能显示具体的数值.
 比如:
@@ -43,14 +43,14 @@ option: 指定图表的配置项和数据
 loopOption: 本插件的配置
 
 | 属性          | 说明                                                                      | 默认值                 |
-| ----------- | ------------------------------------------------------------------------- | ------------------- |
+| ----------- | -------------------------------------------------------------------------   | ------------------- |
 | interval    | 轮播时间间隔，单位毫秒                                                               | 默认为2000             |
 | loopSeries  | true表示循环所有series的tooltip，false则显示指定seriesIndex的tooltip                    | boolean类型，默认为false |
 | seriesIndex | 指定某个系列（option中的series索引）循环显示tooltip,当loopSeries为true时，从seriesIndex系列开始执行. | 默认为0|
 
 实例代码
 
-```js
+```javascript
 function drawSensitiveFile() {
             let myChart = echarts.init(document.getElementById('sensitive-file'));
             let option = {

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>echarts-helper</title>
+	<style>
+    label{line-height: 40px;}
+    .echart-canvas{width: 100%; height: 430px; margin: 0 auto;}
+	</style>
+</head>
+<body>
+    <label>饼状图</label>
+    <div class="echart-canvas" 
+            echart-data='[{"title":"基础知识","get_score":11},{"title":"加分知识","get_score":12},{"title":"未分组","get_score":8}]' 
+            echart-config='{title:"分组得分占比图",type:"pie",name_key:"title",value_key:"get_score"}'></div>
+</body>
+
+<script src="jquery-1.9.1.min.js"></script>
+<script src="echarts.min.js"></script>
+<script src="./theme/wonderland.js"></script>
+<script src="../echarts.helper.js"></script>
+<script>
+    $('body').EChartHelper({
+        'theme':'wonderland',
+    });
+</script>
+</html>

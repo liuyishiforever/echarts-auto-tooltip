@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>echarts-helper</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+    label{line-height: 40px;}
+    .canvas-box{width: 100%; height: 430px; margin: 0 auto;}
+    </style>
+</head>
+<body>
+    <label>基础</label>
+    <pre>
+    // 异步请求回调方法
+    var drawData = {
+        echart_data     : [{"title":"基础知识","get_score":10},{"title":"加分知识","get_score":5},{"title":"未分组","get_score":5}],
+        echart_config   : {type:"pie",name_key:"title",value_key:"get_score",data_name:"分值占比"},
+        echart_option   : {title:{text:"得分组成",subtext: '子标题',x:'center'}}
+    };
+    $('.echart-canvas-01').drawEChart(drawData);
+    </pre>
+    <div class="canvas-box echart-canvas-01"></div>
+
+    <label>基础：绑定请求URL在标签上</label>
+    <pre>
+    $('body').EChartHelper();
+    </pre>
+
+    <pre>
+    <xmp>
+    <div class="echart-canvas canvas-box echart-canvas-01-01"
+            echart-url='./data_simple.js' 
+            echart-config='{data_name:"分值占比",type:"pie",name_key:"title",value_key:"get_score"}'></div>
+    </xmp>
+    </pre>
+
+    <div class="echart-canvas canvas-box echart-canvas-01-01"
+            echart-url='./data_simple.js' 
+            echart-config='{data_name:"分值占比",type:"pie",name_key:"title",value_key:"get_score"}'></div>
+    
+    <pre>
+    <xmp>
+    <div class="echart-canvas canvas-box echart-canvas-01-02"
+            echart-ajax='{url:"./data_profession.js",success_key:"code",success_val:1,data_key:"dataset"}' 
+            echart-config='{data_name:"分值占比",type:"pie",name_key:"title",value_key:"get_score"}'></div>
+    </xmp>
+    </pre>
+
+    <div class="echart-canvas canvas-box echart-canvas-01-02"
+            echart-ajax='{url:"./data_profession.js",success_key:"code",success_val:1,data_key:"dataset"}' 
+            echart-config='{data_name:"分值占比",type:"pie",name_key:"title",value_key:"get_score"}'></div>
+    
+    <label>简单数据格式</label>
+    <pre>
+html:
+<xmp><div class="canvas-box echart-canvas-02"></div></xmp>
+
+js:
+$('.echart-canvas-02').getDrawEChart({
+    'url'       : './data_simple.js',
+    'drow_data' : {            
+        echart_config   : {title:"分组得分占比图",type:"pie",name_key:"title",value_key:"get_score"}
+    }           
+});
+    </pre>
+    <div class="canvas-box echart-canvas-02"></div>
+
+    <label>复杂数据格式</label>
+<pre>
+html:
+<xmp><div class="canvas-box echart-canvas-03"></div></xmp>
+
+js:
+$('.echart-canvas-03').getDrawEChart({
+    'url'           : './data_profession.js',
+    'success_key'   : 'code',       // 数据请求成功标识字段名
+    'success_val'   : '1',          // 数据请求成功标识字段值
+    'data_key'      : 'dataset',    // 数据使用字段
+    'drow_data'     : {             
+        echart_config   : {title:"分组得分占比图",type:"pie",name_key:"title",value_key:"get_score"}
+    }           
+});
+</pre>
+    <div class="canvas-box echart-canvas-03"></div>
+
+    <label>POST传参请求</label>
+<pre>
+html:
+<xmp><div class="canvas-box echart-canvas-04"></div></xmp>
+
+js:
+$('.echart-canvas-04').getDrawEChart({
+    'url'           : './data_profession.js',
+    'type'          : 'POST',
+    'data'          : {p:1},
+    'success_key'   : 'code',       // 数据请求成功标识字段名
+    'success_val'   : '1',          // 数据请求成功标识字段值
+    'data_key'      : 'dataset',    // 数据使用字段
+    'drow_data'     : {             
+        echart_config   : {title:"分组得分占比图",type:"pie",name_key:"title",value_key:"get_score"}
+    }           
+});
+</pre>
+    <div class="canvas-box echart-canvas-04"></div>
+    
+    <!--
+    <div class="canvas-box echart-canvas-04" 
+        echart-url='http://op2.cc' 
+        echart-config='{title:"分组得分占比图",type:"pie",name_key:"title",value_key:"get_score"}'></div>
+    -->
+    
+</body>
+
+<script src="jquery-1.9.1.min.js"></script>
+<script src="echarts.min.js"></script>
+<script src="../echarts.helper.js"></script>
+<script>
+
+    // 绑定在标签上的数据统一渲染
+    $('body').EChartHelper();
+
+    // 异步请求回调方法
+    var drawData = {
+        echart_data     : [{"title":"基础知识","get_score":10},{"title":"加分知识","get_score":5},{"title":"未分组","get_score":5}],
+        echart_config   : {type:"pie",name_key:"title",value_key:"get_score",data_name:"分值占比"},
+        echart_option   : {title:{text:"得分组成",subtext: '子标题',x:'center'}}
+    };
+    $('.echart-canvas-01').drawEChart(drawData);
+
+    // $('.echart-canvas-04').getDrawEChart();
+    // 简单数据格式：get
+    $('.echart-canvas-02').getDrawEChart({
+        'url'       : './data_simple.js',
+        'drow_data' : {              
+            echart_config   : {title:"分组得分占比图",type:"pie",name_key:"title",value_key:"get_score"}
+        }           
+    });
+
+    $('.echart-canvas-03').getDrawEChart({
+        'url'           : './data_profession.js',
+        'success_key'   : 'code',       // 数据请求成功标识字段名
+        'success_val'   : '1',          // 数据请求成功标识字段值
+        'data_key'      : 'dataset',    // 数据使用字段
+        'drow_data'     : {             
+            echart_config   : {title:"分组得分占比图",type:"pie",name_key:"title",value_key:"get_score"}
+        }           
+    });
+
+
+    $('.echart-canvas-04').getDrawEChart({
+        'url'           : './data_profession.js',
+        'type'          : 'POST',
+        'data'          : {p:1},
+        'success_key'   : 'code',       // 数据请求成功标识字段名
+        'success_val'   : '1',          // 数据请求成功标识字段值
+        'data_key'      : 'dataset',    // 数据使用字段
+        'drow_data'     : {            
+            echart_config   : {title:"分组得分占比图",type:"pie",name_key:"title",value_key:"get_score"}
+        }           
+    });
+    /*
+    */
+
+
+
+    /*
+    $('body').EChartHelper({
+        'canvasBox':'.echart-canvas',
+        'chartOption':{
+            'pie':{
+                title : {
+                    subtext: '纯属虚构123',
+                },
+            }
+        }
+    });
+    */
+</script>
+</html>
